@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-const inspirer = new Schema({
+const inspired = new Schema({
     nome:{
         type: String,
         required:true
@@ -19,4 +19,4 @@ const inspirer = new Schema({
     }
 });
 
-module.exports = mongoose.model('Inspirer', inspirer);
+module.exports = mongoose.model('Inspired', inspired);
