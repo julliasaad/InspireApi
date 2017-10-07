@@ -1,0 +1,19 @@
+{
+  "name": "inspireapi",
+  "version": "1.0.0",
+  "description": "Api rest para o aplicativo Inspire",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PuenteVinicius/InspireApi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PuenteVinicius/InspireApi/issues"
+  },
+  "homepage": "https://github.com/PuenteVinicius/InspireApi#readme"
+}
