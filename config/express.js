@@ -2,13 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const consign = require('consign');
 const load = require('express-load');
-const port = process.env.PORT || 3000;
 const path = require('path');
+const port = process.env.PORT || 3000;
 const router = express.Router();
 
 module.exports = function() {
-
-  
 
   const app = express();
   app.use('/api', router.get('/', (req, res) => {
@@ -23,9 +21,9 @@ module.exports = function() {
   app.use(bodyParser.urlencoded({ extended: true }));
   
   consign()
-      .include('server/app/models')
-      .then('server/app/controller')
-      .then('server/app/routes')
+      .include('app/models')
+      .then('app/controller')
+      .then('app/routes')
       .into(app);
 
   return app;
