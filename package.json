@@ -4,7 +4,7 @@
   "description": "Api rest para o aplicativo Inspire",
   "main": "index.js",
   "scripts": {
-    "start":"index.js",    
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/PuenteVinicius/InspireApi/issues"
   },
-  "homepage": "https://github.com/PuenteVinicius/InspireApi#readme"
+  "homepage": "https://github.com/PuenteVinicius/InspireApi#readme",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "express": "^4.16.1",
+    "express-load": "^1.1.16",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.12.0"
+  }
 }

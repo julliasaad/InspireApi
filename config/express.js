@@ -1,24 +1,32 @@
-var express = require('express');
-var load = require('express-load');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const consign = require('consign');
+const load = require('express-load');
+const port = process.env.PORT || 3000;
+const path = require('path');
+const router = express.Router();
 
 module.exports = function() {
-  var app = express();
 
-  app.set('port', (process.env.PORT || 3000));
+  
 
-  app.use(express.static('./public'));
-  app.set('view engine', 'ejs');
-  app.set('views','./app/views');
+  const app = express();
+  app.use('/api', router.get('/', (req, res) => {
+          res.send('api works');
+      })
+  );
 
-  app.use(bodyParser.urlencoded({extended: true}));
+  app.set('port', port);
   app.use(bodyParser.json());
   app.use(require('method-override')());
-
-  load('models', {cwd: 'app'})
-    .then('controllers')
-    .then('routes')
-    .into(app);
+  app.use(express.static(path.join(__dirname, '/../../dist')));
+  app.use(bodyParser.urlencoded({ extended: true }));
+  
+  consign()
+      .include('server/app/models')
+      .then('server/app/controller')
+      .then('server/app/routes')
+      .into(app);
 
   return app;
 };
