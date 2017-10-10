@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 const inspirer = new Schema({
-    nome:{
+    name:{
         type: String,
         required:true
     },
-    user_name:{
+    username:{
         type: String,
         required:true
     },
