@@ -1,23 +1,23 @@
-const user = require("../models/user")
+const course = require("../models/course")
 
-const UserController = {
-    listUsers(req, res) {
-        user.find().exec()
-            .then(function(users) {
-                    res.json(users);
+const CourseController = {
+    listCourses(req, res) {
+        course.find().exec()
+            .then(function(courses) {
+                    res.json(courses);
                 },
                 function(erro) {
                     console.error(erro);
                     res.status(500).json(erro);
                 });
     },
-    getUser(req, res) {
+    getCourse(req, res) {
         var _id = req.params.id;
-        user.findById(_id).exec()
+        course.findById(_id).exec()
             .then(
-                function(user) {
-                    if (!user) throw new Error("Usuária não encontrada!");
-                    res.json(user)
+                function(course) {
+                    if (!course) throw new Error("Curso não encontrado!");
+                    res.json(course)
                 },
                 function(erro) {
                     console.log(erro);
@@ -25,9 +25,9 @@ const UserController = {
                 }
             );
     },
-    removeUser(req, res) {
+    removeCourse(req, res) {
         var _id = req.params.id;
-        user.remove({
+        course.remove({
                 "_id": _id
             }).exec()
             .then(
@@ -39,14 +39,14 @@ const UserController = {
                 }
             );
     },
-    saveUser(req, res) {
+    saveCourse(req, res) {
         /*Update*/
         var _id = req.body._id;
         if (_id) {
-            user.findByIdAndUpdate(_id, req.body).exec()
+            course.findByIdAndUpdate(_id, req.body).exec()
                 .then(
-                    function(user) {
-                        res.json(user);
+                    function(course) {
+                        res.json(course);
                     },
                     function(erro) {
                         console.error(erro);
@@ -54,10 +54,10 @@ const UserController = {
                     }
                 );
         } else {
-            user.create(req.body)
+            course.create(req.body)
                 .then(
-                    function(user) {
-                        res.status(201).json(user);
+                    function(course) {
+                        res.status(201).json(course);
                     },
                     function(erro) {
                         console.log(erro);
@@ -67,4 +67,4 @@ const UserController = {
         }
     }
 }
-module.exports = UserController;
+module.exports = CourseController;
