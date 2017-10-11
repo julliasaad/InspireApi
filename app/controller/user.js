@@ -1,24 +1,24 @@
-const inspire = require("../models/inspirer")
+const user = require("../models/user")
 
-const InspireController = {
+const UserController = {
 
-    listInspirers(req, res) {
-        inspire.find().exec()
-            .then(function (inspires) {
-                    res.json(inspires);
+    listUsers(req, res) {
+        user.find().exec()
+            .then(function (users) {
+                    res.json(users);
                 },
                 function (erro) {
                     console.error(erro);
                     res.status(500).json(erro);
                 });
     },
-    getInspirer (req, res) {
+    getUser(req, res) {
         var _id = req.params.id;
-        inspire.findById(_id).exec()
+        user.findById(_id).exec()
             .then(
-                function (inspire) {
-                    if (!inspire) throw new Error("Inspire não encontrada");
-                    res.json(inspire)
+                function (user) {
+                    if (!user) throw new Error("Usuária não encontrada!");
+                    res.json(user)
                 },
                 function (erro) {
                     console.log(erro);
@@ -26,9 +26,9 @@ const InspireController = {
                 }
             );
     },
-    removeInspirer (req, res) {
+    removeUser(req, res) {
         var _id = req.params.id;
-        inspire.remove({
+        user.remove({
                 "_id": _id
             }).exec()
             .then(
@@ -40,14 +40,14 @@ const InspireController = {
                 }
             );
     },
-    saveInspirer (req, res) {
+    saveUser(req, res) {
         /*Update*/
         var _id = req.body._id;
         if (_id) {
-            Inspire.findByIdAndUpdate(_id, req.body).exec()
+            user.findByIdAndUpdate(_id, req.body).exec()
                 .then(
-                    function (inspire) {
-                        res.json(inspire);
+                    function (user) {
+                        res.json(user);
                     },
                     function (erro) {
                         console.error(erro);
@@ -55,10 +55,10 @@ const InspireController = {
                     }
                 );
         } else {
-            inspire.create(req.body)
+            user.create(req.body)
                 .then(
-                    function (inspire) {
-                        res.status(201).json(inspire);
+                    function (user) {
+                        res.status(201).json(user);
                     },
                     function (erro) {
                         console.log(erro);
@@ -68,8 +68,4 @@ const InspireController = {
         }
     }
 }
-module.exports = InspireController;
-
-
-
-
+module.exports = UserController;
