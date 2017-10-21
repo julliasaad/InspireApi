@@ -17,7 +17,12 @@ const user = new Schema({
   },
   type: {
     type: String,
-    required: true
+  },
+  biography: {
+    type: String,
+  },
+  photo: {
+    type: String,
   }
 });
 
