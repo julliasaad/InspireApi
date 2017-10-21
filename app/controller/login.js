@@ -3,12 +3,12 @@ const user = require("../models/user");
 
 const LoginController = {
   logar(req, res) {
-    var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
     user.findOne({
-      'username': username,
+      'email': email,
       'password': password
-    }, 'username password', function(err, user) {
+    }, 'email password', function(err, user) {
       if (err) {
         res.send(false);
       }
