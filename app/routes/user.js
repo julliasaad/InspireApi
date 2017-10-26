@@ -10,4 +10,7 @@ module.exports = function(app) {
   app.delete('/api/user', function(req, res) {
     controller.removeUser(req, res);
   });
+  app.get('/api/user/:id', function(req, res) {
+    controller.getUser(req, res);
+  });
 };
