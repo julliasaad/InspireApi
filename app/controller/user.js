@@ -43,6 +43,7 @@ const UserController = {
     /*Update*/
     var _id = req.body._id;
     if (_id) {
+      console.log("tenho id");
       user.findByIdAndUpdate(_id, req.body).exec()
         .then(
           function(user) {
